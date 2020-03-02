@@ -1,4 +1,4 @@
-# common-crawl-malayalam  
+# Common-Crawl-Malayalam  
 Useful tools for extracting malayalam text from the Common Crawl Dataset  
   
 ### Running on AWS  
