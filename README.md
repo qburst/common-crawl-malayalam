@@ -62,6 +62,6 @@ Please find the cleaned up Malayalam text from the Common Crawl Archives Below:
 ------------------------------------------------------------------------
 | Common Crawl Date | Link to Cleaned Dataset                          |
 |-------------------|--------------------------------------------------|
-| 2020-05 	    | https://calicut.qburst.in/commoncrawl/malayalam/ |
+| 2020-05 	    | https://calicut.qburst.in/commoncrawl/malayalam/2020-05/ |
 ------------------------------------------------------------------------
 
