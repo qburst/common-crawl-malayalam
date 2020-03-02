@@ -28,10 +28,10 @@ mkdir -p unfiltered_heading_and_para
 python3 src/process_warc_batch.py
 
 #compress both directories and upload to s3 specified path
-tar -czvf malayalam_filtered_html_body/ malayalam_filtered_html_body.tar.gz
-tar -czvf unfiltered_heading_and_para/ unfiltered_heading_and_para.tar.gz
+tar -czvf malayalam_filtered_html_body.tar.gz malayalam_filtered_html_body/
+tar -czvf unfiltered_heading_and_para.tar.gz unfiltered_heading_and_para/
 
 aws s3 cp malayalam_filtered_html_body.tar.gz $S3_OUTPUT_DIRECTORY/malayalam_filtered_html_body.tar.gz
-aws s3 cp unfiltered_heading_and_para.tar.gz $S3_OUTPUT_DIRECTORY/malayalam_filtered_html_body.tar.gz
+aws s3 cp unfiltered_heading_and_para.tar.gz $S3_OUTPUT_DIRECTORY/unfiltered_heading_and_para.tar.gz
 
 
