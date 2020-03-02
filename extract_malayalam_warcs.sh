@@ -43,7 +43,7 @@ wait_for_query_execution_status() {
 echo "Creating Database ccindex in Athena"
 queryExecutionId=$(
   aws athena start-query-execution \
-    --query-string "CREATE DATABASE ccindex" \
+    --query-string "CREATE DATABASE IF NOT EXISTS ccindex" \
     --result-configuration OutputLocation=s3://nlp-malayalam/meta_queries/ \
     --region us-east-1 | python3 src/json_parser.py ".QueryExecutionId"
 )
@@ -148,24 +148,24 @@ CSV_FILENAME="$queryExecutionId.csv"
 S3_CSV_PATH="$S3_BUCKET/$CC_CRAWL_ID/${CSV_FILENAME}"
 echo "Query Complete. CSV results availabe at path : $S3_CSV_PATH"
 
-if [ $5 -ne 0 ]
+if [ -z "$5" ]
   then
+    printf "\n\nNo previous CSV was supplied.\n"
+    CSV_PATH=$S3_CSV_PATH
+  else
     printf "\n\nCopying csv file from s3 to local for filtering out duplicates.\n"
     aws s3 cp $S3_CSV_PATH ./$CC_CRAWL_ID.csv
     python3 src/remove_duplicates.py ./$CC_CRAWL_ID.csv $OLD_CSV ./"$CC_CRAWL_ID"_filtered_out.csv
-    aws s3 cp ./"$CC_CRAWL_ID"_filtered_out.csv $S3_BUCKET/$CC_CRAWL_ID/"$CC_CRAWL_ID"_filtered_out.csv
     echo "Filtering complete. Uploading results back to S3"
+    aws s3 cp ./"$CC_CRAWL_ID"_filtered_out.csv $S3_BUCKET/$CC_CRAWL_ID/"$CC_CRAWL_ID"_filtered_out.csv
     CSV_PATH=$S3_BUCKET/$CC_CRAWL_ID/"$CC_CRAWL_ID"_filtered_out.csv
-  else
-    printf "\n\nNo previous CSV was supplied.\n"
-    CSV_PATH=$S3_CSV_PATH
 fi
 
-# APP_JAR_PATH is provided from our repo as cc-index-commoncrawl repo has a bug with EMR and needs to be rebuild after editing source
+# APP_JAR_PATH is provided from our repo as cc-index-commoncrawl repo has a bug with EMR and needs to be rebuilt after editing source
+APP_JAR_PATH="$S3_BUCKET/artifacts/cc-index-table-0.2-SNAPSHOT-jar-with-dependencies.jar"
 printf "\n\nUploading spark app jar to s3.\n"
-aws s3 cp ./cc-index-table-0.2-SNAPSHOT-jar-with-dependencies.jar "$S3_BUCKET/cc-index-table-0.2-SNAPSHOT-jar-with-dependencies.jar"
+aws s3 cp artifacts/cc-index-table-0.2-SNAPSHOT-jar-with-dependencies.jar $APP_JAR_PATH
 
-APP_JAR_PATH="$S3_BUCKET/cc-index-table-0.2-SNAPSHOT-jar-with-dependencies.jar"
 OUTPUT_DIRECTORY="$S3_BUCKET/$CC_CRAWL_ID/warcs/"
 LOG_DIRECTORY="$S3_BUCKET/$CC_CRAWL_ID/emr-logs/"
 WARC_PREFIX="MALAYALAM-CC-$CC_CRAWL_ID"
