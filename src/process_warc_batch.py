@@ -135,8 +135,8 @@ if __name__ == '__main__':
 
             out_name_base = str(str(file.split('.')[0]).split("-")[-1])
 
-            out_name_heading_para = FILTERED_DIRECTORY + out_name_base + "_heading_para" + ".txt"
-            out_name_html_body = UNFILTERED_DIRECTORY + out_name_base + "_html_body" + ".txt"
+            out_name_heading_para = UNFILTERED_DIRECTORY + out_name_base + "_heading_para" + ".txt"
+            out_name_html_body = FILTERED_DIRECTORY + out_name_base + "_html_body" + ".txt"
 
             print(f"Output File Prefix  :{out_name_base}")
 
