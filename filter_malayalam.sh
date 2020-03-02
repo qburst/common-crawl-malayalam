@@ -23,8 +23,8 @@ pip3 install -r requirements.txt
 
 aws s3 cp $S3_WARC_FOLDER warcs/ --recursive
 
-mkdir malayalam_filtered_html_body
-mkdir unfiltered_heading_and_para
+mkdir -p malayalam_filtered_html_body
+mkdir -p unfiltered_heading_and_para
 python3 src/process_warc_batch.py
 
 #compress both directories and upload to s3 specified path
