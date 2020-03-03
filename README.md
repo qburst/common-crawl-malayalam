@@ -45,7 +45,7 @@ Example:-
 * Here, you can also provide any previously processed csv as the last optional argument. This helps in avoiding fetching  duplicate crawled urls.
 * After you run the above script, you would have the WARC files in S3.
 * In order to extract the malayalam content, you can either download the WARC files back to your machine or spin up an
-EC2 instance and process it there.
+EC2 instance and process it there. EC2 instance with Ubuntu Server 18.04 AMI with atleast 50 GB of storage and type m5.large is preferred.
 * We are also providing a handy script to extract malayalam content in filter_malayalam.sh. Its usage is as follows:-
 ```buildoutcfg
 ./filter_malayalam.sh <AWS Secret Key ID> <AWS Secret Key> <S3 Warc Folder> <S3 Out Directory>
