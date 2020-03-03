@@ -49,6 +49,7 @@ EC2 instance and process it there.
 * We are also providing a handy script to extract malayalam content in filter_malayalam.sh. Its usage is as follows:-
 ```buildoutcfg
 ./filter_malayalam.sh <AWS Secret Key ID> <AWS Secret Key> <S3 Warc Folder> <S3 Out Directory>
+PS: Do not include trailing slashes in the S3 paths. Eg:- s3://nlp-mal/2019-51/output
 ```  
   
   
@@ -61,5 +62,6 @@ Please find the cleaned up corpus below:
 | Common Crawl Date | Link to Cleaned Dataset                          |
 |-------------------|--------------------------------------------------|
 | 2020-05 	    | https://calicut.qburst.in/commoncrawl/malayalam/2020-05/ |
+|2019-51        | https://calicut.qburst.in/commoncrawl/malayalam/2019-51/ |
 ------------------------------------------------------------------------
 
