@@ -64,5 +64,7 @@ Please find the cleaned up corpus below:
 |2020-10      | https://calicut.qburst.in/commoncrawl/malayalam/2020-10/ |                                                   
 |2020-05 	    | https://calicut.qburst.in/commoncrawl/malayalam/2020-05/ |
 |2019-51        | https://calicut.qburst.in/commoncrawl/malayalam/2019-51/ |
+|2019-47        | https://calicut.qburst.in/commoncrawl/malayalam/2019-47/ |
+|2019-43        | https://calicut.qburst.in/commoncrawl/malayalam/2019-43/ |
 ------------------------------------------------------------------------
 
