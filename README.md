@@ -39,9 +39,7 @@ AWS credentials and the path of the S3 bucket.
 ```
 ./extract_malayalam_warcs.sh <AWS Secret Key ID> <AWS Secret Key> <Crawl ID> <S3 Bucket Root Path> <Previously processed csv>
 
-Example:-
-./extract_malayalam_warcs.sh AK1232CJGTCWBMM312 YJDohI_6ADlvs4iv323RsJ2_MOFUUNjCZYB3kQgVN 2019-51 s3://nlp-malayalam 2020-05.csv
-```   
+
 * Here, you can also provide any previously processed csv as the last optional argument. This helps in avoiding fetching  duplicate crawled urls.
 * After you run the above script, you would have the WARC files in S3.
 * In order to extract the malayalam content, you can either download the WARC files back to your machine or spin up an
